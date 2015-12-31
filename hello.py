@@ -15,7 +15,7 @@ def index():
 
 @app.route('/index/', methods=['POST'])
 def index_post():
-	text = request.form['textarea']
+	text = request.form['input']
 	new_text = ' You wrote this: %s' % text
 	return new_text
 	
