@@ -13,6 +13,12 @@ def hello_world2(user):
 def index():
 		return render_template('index.html')
 
+@app.route('/index/', methods=['POST'])
+def index_post():
+	text = request.form['text']
+	new_text = ' You wrote this: %s' % text
+	return new_text
 	
+
 if __name__ == '__main__':
 	app.run()
