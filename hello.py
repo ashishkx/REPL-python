@@ -11,11 +11,11 @@ def hello_world2(user):
 	
 @app.route('/index/')
 def index():
-		return render_template('index.html')
+	return render_template('index.html')
 
 @app.route('/index/', methods=['POST'])
 def index_post():
-	text = request.form['text']
+	text = request.form['textarea']
 	new_text = ' You wrote this: %s' % text
 	return new_text
 	
