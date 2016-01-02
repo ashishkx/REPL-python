@@ -8,16 +8,17 @@ def hello_world():
 @app.route('/<user>')
 def hello_world2(user):
 	return 'Hello World %s! <h1 color = red> This is html right here </h1> %s' % (user, request.method)
-	
-@app.route('/index/')
+		
+@app.route('/index/', methods=['GET', 'POST'])
 def index():
+	if request.method == 'POST':
+		text = request.form['userinput']
+		new_text = ' You wrote this: %s' % text
+		
 	return render_template('index.html')
+	
+	
 
-@app.route('/index/', methods=['POST'])
-def index_post():
-	text = request.form['input']
-	new_text = ' You wrote this: %s' % text
-	return new_text
 	
 
 if __name__ == '__main__':
