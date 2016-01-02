@@ -14,8 +14,11 @@ def index():
 	if request.method == 'POST':
 		text = request.form['userinput']
 		new_text = ' You wrote this: %s' % text
-		
-	return render_template('index.html')
+		return new_text
+	
+	
+	else:	
+		return render_template('index.html')
 	
 	
 
