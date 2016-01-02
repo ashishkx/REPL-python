@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+from jinja2 import Environment
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,7 +15,7 @@ def index():
 	if request.method == 'POST':
 		text = request.form['userinput']
 		new_text = ' You wrote this: %s' % text
-		return new_text
+		return render_template('index.html', userout=new_text)
 	
 	
 	else:	
