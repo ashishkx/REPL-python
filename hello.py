@@ -14,7 +14,7 @@ def hello_world2(user):
 def index():
 	if request.method == 'POST':
 		text = request.form['userinput']
-		new_text = ' You wrote this: %s' % text
+		new_text = '%s\n'%text + text.upper()
 		return render_template('index.html', userout=new_text)
 	
 	
