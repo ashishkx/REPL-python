@@ -1,14 +1,18 @@
 from flask import Flask, request, render_template
+import os
 app = Flask(__name__)
 
+
+makefile(user_code):
+	f = open("textarea_input.py", "w+")
+	f.write(user_code)
+	f.close()
+		
 @app.route('/', methods=['GET', 'POST'])
 def index():
     new_text=""
     if request.method == 'POST':
         text = request.form['userinput']
-        code_text = compile(text,'<string>','eval')
-        eval_text = eval(code_text)
-    return render_template('index.html', userout=eval_text)
-
-if __name__ == '__main__':
-    app.run()
+        makefile(text)
+		os.system("python textarea_input.py")
+    return render_template('index.html', userout=)
