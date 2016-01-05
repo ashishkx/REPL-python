@@ -10,12 +10,11 @@ def makefile(user_code):
 		
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    new_text=""
     if request.method == 'POST':
         text = request.form['userinput']
         makefile(text)
-        proc = subprocess.Popen(["textarea_input.py"])
-    return render_template('index.html', userout=None)
+        proc = subprocess.check_output(["python", "textarea_input.py"])
+    return render_template('index.html', userout= proc)
     
 if __name__ == '__main__':
     app.run()
