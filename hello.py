@@ -1,20 +1,14 @@
 from flask import Flask, request, render_template
 app = Flask(__name__)
 
-		
 @app.route('/', methods=['GET', 'POST'])
 def index():
     new_text=""
     if request.method == 'POST':
         text = request.form['userinput']
-        new_text = '%s\n'%text + text.upper()
-
-    return render_template('index.html', userout=new_text)
-
-	
-	
-
-	
+        code_text = compile(text,'<string>','eval')
+        eval_text = eval(code_text)
+    return render_template('index.html', userout=eval_text)
 
 if __name__ == '__main__':
     app.run()
