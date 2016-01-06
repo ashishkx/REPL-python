@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 import subprocess
+import logging
 app = Flask(__name__)
 
 
@@ -10,11 +11,14 @@ def makefile(user_code):
 		
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    proc = None
     if request.method == 'POST':
         text = request.form['userinput']
         makefile(text)
         proc = subprocess.check_output(["python", "textarea_input.py"])
-    return render_template('index.html', userout= proc)
-    
+        print (proc)
+    return render_template('index.html', userout = proc)
+
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
