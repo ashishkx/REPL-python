@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    new_text=""
+    eval_text=None
     if request.method == 'POST':
         text = request.form['userinput']
         code_text = compile(text,'<string>','eval')
@@ -11,4 +11,4 @@ def index():
     return render_template('index.html', userout=eval_text)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
